@@ -1,6 +1,6 @@
 # Calculadora 2026 (ADP)
 
-![](./docs/calculadora2026.gif)
+![](./docs/Calculadora2026.gif)
 
 ## Introdução
 Calculadora feita em C# no VSCode na Academia do Programador, turma 2026. Simples mas eficaz.
