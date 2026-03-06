@@ -16,7 +16,7 @@ while (continuar == true)
     Console.WriteLine();
 
     Console.Write("Escolha uma operação: ");
-    string Operacao = Console.ReadLine();
+    string? Operacao = Console.ReadLine();
 
     if (Operacao == "s")
     {
@@ -30,55 +30,88 @@ while (continuar == true)
         return;
     }
 
-    System.Console.WriteLine();
+    Console.WriteLine();
 
     Console.Write("Digite o primeiro número: ");
-    string PrimeiroNumero = Console.ReadLine();
+    string? strPrimeiroNumero = Console.ReadLine();
 
     Console.WriteLine();
 
     Console.Write("Digite o segundo número: ");
-    string SegundoNumero = Console.ReadLine();
+    string? strSegundoNumero = Console.ReadLine();
 
     Console.WriteLine();
 
-    Console.WriteLine("O primeiro número digitado foi: " + PrimeiroNumero);
+    Console.WriteLine("O primeiro número digitado foi: " + strPrimeiroNumero);
 
     Console.WriteLine();
 
-    Console.WriteLine("O segundo número digitado foi: " + SegundoNumero);
+    Console.WriteLine("O segundo número digitado foi: " + strSegundoNumero);
 
     Console.WriteLine();
 
-    int PrimeiroNumeroInt = Convert.ToInt32(PrimeiroNumero);
-    int SegundoNumeroInt = Convert.ToInt32(SegundoNumero);
-    int resultado = 0;
-
-    if (Operacao == "1")
+    bool PrimeiroNumeroVazio = string.IsNullOrEmpty(strPrimeiroNumero);
+    bool SegundoNumeroVazio = string.IsNullOrEmpty(strSegundoNumero);
+    if (PrimeiroNumeroVazio == true || SegundoNumeroVazio == true)
     {
-        resultado = PrimeiroNumeroInt + SegundoNumeroInt;
+        Console.WriteLine("Digite ambos os números.");
+        Console.WriteLine();
+        return;
+    }
+
+    decimal PrimeiroNumero = Convert.ToDecimal(strPrimeiroNumero);
+    decimal SegundoNumero = Convert.ToDecimal(strSegundoNumero);
+    decimal resultado = 0;
+
+    switch (Operacao)
+    {
+        case "1":
+            resultado = PrimeiroNumero + SegundoNumero;
+            break;
+        case "2":
+            resultado = PrimeiroNumero - SegundoNumero;
+            break;
+        case "3":
+            resultado = PrimeiroNumero * SegundoNumero;
+            break;
+        case "4":
+            if (SegundoNumero == 0)
+            {
+                Console.WriteLine("Divisão por zero não é possível.");
+                return;
+            }
+            resultado = PrimeiroNumero / SegundoNumero;
+            break;
+        default:
+            Console.WriteLine("Operação inválida. Escolha uma operação válida.");
+            continue;
+    }
+
+    /*if (Operacao == "1")
+    {
+        resultado = PrimeiroNumero + SegundoNumero;
     }
     else if (Operacao == "2")
     {
-        resultado = PrimeiroNumeroInt - SegundoNumeroInt;
+        resultado = PrimeiroNumero - SegundoNumero;
     }
     else if (Operacao == "3")
     {
-        resultado = PrimeiroNumeroInt * SegundoNumeroInt;
+        resultado = PrimeiroNumero * SegundoNumero;
     }
     else if (Operacao == "4")
     {
-        if (SegundoNumeroInt == 0)
+        if (SegundoNumero == 0)
         {
             Console.WriteLine("Divisão por zero não é possível.");
             return;
         }
-        resultado = PrimeiroNumeroInt / SegundoNumeroInt;
+        resultado = PrimeiroNumero / SegundoNumero;
     }
     else
     {
         Console.WriteLine("Operação inválida. Por favor, escolha uma operação válida.");
-    }
+    }*/
 
     Console.WriteLine("O resultado da operação é: " + resultado);
 
