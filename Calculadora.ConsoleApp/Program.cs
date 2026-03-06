@@ -11,6 +11,7 @@ while (continuar == true)
     Console.WriteLine("2 = subtração");
     Console.WriteLine("3 = multiplicação");
     Console.WriteLine("4 = divisão");
+    Console.WriteLine("5 = tabuada");
     Console.WriteLine("s = sair");
 
     Console.WriteLine();
@@ -24,13 +25,28 @@ while (continuar == true)
         Console.WriteLine("Encerrando a calculadora.");
         break;
     }
-    else if (Operacao != "1" && Operacao != "2" && Operacao != "3" && Operacao != "4" && Operacao != "s")
+    else if (Operacao != "1" && Operacao != "2" && Operacao != "3" && Operacao != "4" && Operacao != "5" && Operacao != "s")
     {
         Console.WriteLine("Operação inválida, escolha outra operação");
         return;
     }
 
     Console.WriteLine();
+
+    if (Operacao == "5")
+    {
+        Console.Write("Digite um número para gerar a tabuada: ");
+        int TabuadaNumero = Convert.ToInt32(Console.ReadLine());
+
+        for (int contador = 1; contador <= 10; contador++)
+        {
+            int resultadoTabuada = TabuadaNumero * contador;
+            string operacaoTabuada = TabuadaNumero + " x " + contador + " = " + resultadoTabuada;
+            Console.WriteLine(operacaoTabuada);
+        }
+        Console.ReadLine();
+        continue;
+    }
 
     Console.Write("Digite o primeiro número: ");
     string? strPrimeiroNumero = Console.ReadLine();
@@ -86,32 +102,6 @@ while (continuar == true)
             Console.WriteLine("Operação inválida. Escolha uma operação válida.");
             continue;
     }
-
-    /*if (Operacao == "1")
-    {
-        resultado = PrimeiroNumero + SegundoNumero;
-    }
-    else if (Operacao == "2")
-    {
-        resultado = PrimeiroNumero - SegundoNumero;
-    }
-    else if (Operacao == "3")
-    {
-        resultado = PrimeiroNumero * SegundoNumero;
-    }
-    else if (Operacao == "4")
-    {
-        if (SegundoNumero == 0)
-        {
-            Console.WriteLine("Divisão por zero não é possível.");
-            return;
-        }
-        resultado = PrimeiroNumero / SegundoNumero;
-    }
-    else
-    {
-        Console.WriteLine("Operação inválida. Por favor, escolha uma operação válida.");
-    }*/
 
     Console.WriteLine("O resultado da operação é: " + resultado);
 
